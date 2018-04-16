@@ -11,21 +11,18 @@ $(document).ready(function() {
 		success : function(data){
 			console.log(data);
 
-			var order_date = [];
+			var date = [];
       var quantity = [];
 
 			var len = data.length;
 
 			for (var i in data) {
-        if (data[i].order_date = data[i].order_date) {
-          var date = data[i].order_date;
-        }
-				order_date.push(date);
+				date.push(data[i].date);
         quantity.push(data[i].quantity);
 			}
 
       var chartdata = {
-        labels: order_date,
+        labels: date,
         datasets: [
           {
             label: "Date",
@@ -35,7 +32,7 @@ $(document).ready(function() {
             borderColor: "rgba(59, 89, 152, 1)",
             pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
             pointHoverBorderColor: "rgba(59, 89, 152, 1)",
-            data: order_date
+            data: date
           },
           {
             label: "Sales",
