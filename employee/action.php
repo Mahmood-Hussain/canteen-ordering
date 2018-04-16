@@ -48,7 +48,7 @@ public function select($table, $where){
   }
    $candition = substr($candition, 0 , -5);
    $query .= "SELECT * FROM ".$table. " WHERE " .$candition;
-   //echo $query;
+   // echo $query;
    $result = mysqli_query($this->conn, $query);
    while($row = mysqli_fetch_assoc($result)){
    $array[] = $row;
@@ -100,7 +100,9 @@ public function sum($column, $table, $where){
     $item = strip_tags(htmlspecialchars($_POST['item']));
     $where = array("title"=>$item);
     $row = $obj->select("items", $where);
-    $price = $row["price"];
+    foreach ($row as $pricerow) {
+      $price = $pricerow["price"];
+    }
 
     $total_price = $price * $quantity;
 
@@ -115,6 +117,7 @@ public function sum($column, $table, $where){
 
    if($obj -> insert("orders", $myArray)){
      $_SESSION['details'] = $myArray;
+     echo $_SESSION['details'];
      header("location:success.php?message=successfully added");
    }
  }

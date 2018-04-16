@@ -23,7 +23,7 @@ include_once 'action.php';
                     <input class="form-control" type="date" name="order_date" required>
                   </div>
                   <div class="col-md-6">
-                    <label for="exampleInputLastName">Quantity</label>
+                    <label>Quantity</label>
                     <input input type="number" class="form-control" name="quantity" required>
                   </div>
                 </div>

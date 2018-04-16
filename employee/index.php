@@ -137,6 +137,61 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card mb-10">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> All Orders</div>
+            <div class="card-body">
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th>Oder Date</th>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th>Placed Date</th>
+                  <th>Total Price</th>
+                </tr>
+                  <?php
+                  $where = array("emp_name"=>$_SESSION['user']);
+                  $data = array();
+                  $data = $obj->select("orders", $where);
+                  foreach ($data as $row) {
+                    ?>
+                    <tr>
+                    <td><?php echo $row["order_date"]; ?></td>
+                    <td><?php echo $row["item"]; ?></td>
+                    <td><?php echo $row["quantity"]; ?></td>
+                    <td><?php echo $row["auto_date"]; ?></td>
+                    <td><?php echo $row["total_price"]; ?></td>
+                    </tr>
+                <?php  } ?>
+                <tr>
+                  <?php
+                    $where = array("emp_name"=>$_SESSION['user']);
+                    $row = $obj->count("id","orders", $where);
+                   ?>
+                  <th>Total Orders =  <?php echo $row[0]; ?> </th>
+                  <td></td>
+
+                  <?php
+                    $where = array("emp_name"=>$_SESSION['user']);
+                    $row = $obj->sum("quantity","orders", $where);
+                   ?>
+                  <th>Total Quantity = <?php echo $row[0]; ?></th>
+                  <th></th>
+                  <?php
+                    $where = array("emp_name"=>$_SESSION['user']);
+                    $row = $obj->sum("total_price","orders", $where);
+                   ?>
+                  <th>Total Price = &#x20b9; <?php echo $row[0]; ?></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- Example Notifications Card-->
+        </div>
+      </div>
+
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
