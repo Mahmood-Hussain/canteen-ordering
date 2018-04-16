@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+if (!session_start()) {
+    session_start();
+  }
+  if (!isset($_SESSION['user'])) {
+    echo "<script> window.location.replace('../index.php') </script>";
+  }
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
