@@ -1,3 +1,4 @@
+# Canteen Ordering and Graphs in PHP
 If you want to run this project in your localmachine follow the steps:
 1> Open localhost and create database "restaurant" in phpmyadmin
 2> open the project in local machine and thats it!
